@@ -5,4 +5,8 @@ package com.java8.example.garage.model;
  */
 public interface Vehicle {
     String getLicense();
+
+    boolean isGarage();
+
+    void setGarage(boolean garage);
 }

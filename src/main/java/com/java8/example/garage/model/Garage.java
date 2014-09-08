@@ -9,6 +9,10 @@ public class Garage {
 
     int maxCapacity;
 
+    int maxLevel;
+
+    int maxSlot;
+
     GarageCounter counter;
 
     ParkingPlace[][] places;
@@ -17,6 +21,9 @@ public class Garage {
     }
 
     public Garage(GarageCounter counter, int maxLevel, int maxSlot) {
+
+        this.maxLevel = maxLevel;
+        this.maxSlot = maxSlot;
         this.maxCapacity = maxLevel * maxSlot;
         this.counter = counter;
 
@@ -32,6 +39,14 @@ public class Garage {
         }
     }
 
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+
+    public int getMaxSlot() {
+        return maxSlot;
+    }
+
     public int getMaxCapacity() {
         return maxCapacity;
     }
@@ -42,6 +57,57 @@ public class Garage {
 
     public ParkingPlace[][] getPlaces() {
         return places;
+    }
+
+    public void setPlace(ParkingPlace place){
+        places[place.getLevel()][place.getSlot()] = place;
+    }
+
+    public boolean isFree(){
+        return maxCapacity > counter.get();
+    }
+
+    public int getFreeSpaces(){
+        return maxCapacity - counter.get();
+    }
+
+    public  ParkingPlace getFreeParkingPlace(){
+
+        for(int i=0; i < maxLevel; i++ ){
+            for(int j=0; j < maxSlot; j++){
+                if(places[i][j].isFree()){
+                    return places[i][j];
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public  ParkingPlace getParkingPlace(Vehicle vehicle){
+        for (int i=0; i < maxLevel; i++){
+            for(int j=0; j < maxSlot; j++){
+                if(places[i][j].getVehicle().equals(vehicle)){
+                    return places[i][j];
+                }
+            }
+        }
+        return null;
+    }
+
+    public  ParkingPlace getParkingPlaceByLicense(String license){
+        for (int i=0; i < maxLevel; i++){
+            for(int j=0; j < maxSlot; j++){
+                if(isVehicleParked( places[i][j].getVehicle(), license)){
+                    return places[i][j];
+                }
+            }
+        }
+        return null;
+    }
+
+    private boolean isVehicleParked(Vehicle vehicle, String licence){
+        return (vehicle != null && vehicle.getLicense().equals(licence));
     }
 
 }

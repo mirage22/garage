@@ -11,6 +11,8 @@ public class ParkingPlace {
 
     private Integer slot;
 
+    private boolean free;
+
     public ParkingPlace() {
     }
 
@@ -18,6 +20,7 @@ public class ParkingPlace {
         this.vehicle = vehicle;
         this.level = level;
         this.slot = slot;
+        this.free = true;
     }
 
     public Vehicle getVehicle() {
@@ -36,4 +39,11 @@ public class ParkingPlace {
         return slot;
     }
 
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
+    }
 }

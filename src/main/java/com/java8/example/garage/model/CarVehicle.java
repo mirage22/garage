@@ -12,6 +12,16 @@ public class CarVehicle implements Vehicle {
     public CarVehicle() {
     }
 
+    public CarVehicle(String license) {
+        this.license = license;
+        this.garage = false;
+    }
+
+    public CarVehicle(String license, boolean garage) {
+        this.license = license;
+        this.garage = garage;
+    }
+
     public String getLicense() {
         return license;
     }
@@ -30,9 +40,24 @@ public class CarVehicle implements Vehicle {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(getClass().getName());
+        StringBuilder builder = new StringBuilder(getClass().getSimpleName());
         builder.append(" licence= ").append(license);
         builder.append(" garage= ").append(garage);
         return builder.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (getClass().equals(obj.getClass())){
+            CarVehicle motoVehicle = (CarVehicle) obj;
+            return (license.equals(motoVehicle.getLicense()));
+        }
+        return false;
+
     }
 }
