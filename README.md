@@ -20,3 +20,6 @@ tasks 2,3,6 - are responsible thread base to the customization
 There are included also tests
 GarageCounter - important to keep update any time number of the cars inside, extends AtomicInteger
 SensorExceptionHandler - when anything happens inside the Thread need to be processed
+
+maven-assembly-plugin plugin allows run GarageSimulator1Test from the command line
+#java -jar garage-1.0-SNAPSHOT-jar-with-dependencies.jar
