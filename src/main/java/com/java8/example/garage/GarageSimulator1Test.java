@@ -50,7 +50,7 @@ public class GarageSimulator1Test {
     private static final int MAX_LABEL = 10;
     private static final int MAX_PER_ENTRANCE = 4;
 
-    public static void main(String... args){
+    public static void main(String... args) throws Exception{
         logger.debug("GARAGE SIMULATOR TWO");
 
         //Label Service
