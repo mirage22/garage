@@ -4,6 +4,9 @@ import com.java8.example.garage.task.GarageCounter;
 
 /**
  * Created by miroslavkopecky on 08/09/14.
+ *
+ * Class Garage represent the object that stores Parking places for vehicles
+ *
  */
 public class Garage {
 
@@ -13,6 +16,13 @@ public class Garage {
 
     int maxSlot;
 
+    int sensorsIn;
+
+    int sensorsOut;
+
+    int maxEntrance;
+
+    //Atomic counter provides Garage status
     GarageCounter counter;
 
     ParkingPlace[][] places;
@@ -20,20 +30,32 @@ public class Garage {
     public Garage() {
     }
 
-    public Garage(GarageCounter counter, int maxLevel, int maxSlot) {
+    /**
+     * Creator with properties initialisation
+     * Latter could be added as the properties
+     *
+     * @param counter - Atomic counter for Garage
+     * @param maxLevel - Max Level of the Garage
+     * @param maxSlot - Max Slots in each level
+     * @param sensorsIn - number of Gages IN
+     * @param sensorsOut - number of Gages OUT
+     * @param maxEntrance - maximum car that can stay at the entrance
+     */
+    public Garage(GarageCounter counter, int maxLevel, int maxSlot, int sensorsIn, int sensorsOut, int maxEntrance) {
 
         this.maxLevel = maxLevel;
         this.maxSlot = maxSlot;
         this.maxCapacity = maxLevel * maxSlot;
+        this.sensorsIn = sensorsIn;
+        this.sensorsOut = sensorsOut;
+        this.maxEntrance = maxEntrance;
+
         this.counter = counter;
 
         places = new ParkingPlace[maxLevel][maxSlot];
 
-        System.out.println("CREATE GARAGE maxLevel= " + maxLevel + " maxSlot= " + maxSlot);
-
         for(int i=0; i < maxLevel; i++){
             for(int j=0; j< maxSlot; j++){
-                System.out.println("CREATE GARAGE i= " + i + " j= " + j);
                 places[i][j] = new ParkingPlace(null,i,j);
             }
         }
@@ -71,6 +93,22 @@ public class Garage {
         return maxCapacity - counter.get();
     }
 
+    public int getSensorsIn() {
+        return sensorsIn;
+    }
+
+    public int getSensorsOut() {
+        return sensorsOut;
+    }
+
+    public int getMaxEntrance() {
+        return maxEntrance;
+    }
+
+    /**
+     * Get Any Free Parking Place
+     * @return - return ParkingPlace if it's availble
+     */
     public  ParkingPlace getFreeParkingPlace(){
 
         for(int i=0; i < maxLevel; i++ ){
@@ -84,10 +122,15 @@ public class Garage {
         return null;
     }
 
+    /**
+     * Get Parking place where is specific vehicle
+     * @param vehicle - specific vehicle
+     * @return - vehicle parking place
+     */
     public  ParkingPlace getParkingPlace(Vehicle vehicle){
         for (int i=0; i < maxLevel; i++){
             for(int j=0; j < maxSlot; j++){
-                if(places[i][j].getVehicle().equals(vehicle)){
+                if(isVehicleParked(places[i][j].getVehicle(), vehicle)){
                     return places[i][j];
                 }
             }
@@ -104,6 +147,12 @@ public class Garage {
             }
         }
         return null;
+    }
+
+    //Private Methods
+
+    private boolean isVehicleParked(Vehicle parkedVehicle, Vehicle vehicle){
+        return parkedVehicle != null && parkedVehicle.equals(vehicle);
     }
 
     private boolean isVehicleParked(Vehicle vehicle, String licence){

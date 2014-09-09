@@ -2,8 +2,12 @@ package com.java8.example.garage.model;
 
 /**
  * Created by miroslavkopecky on 08/09/14.
+ *
+ * Car vehicle class implement the interface Vehicles.
+ *
  */
 public class CarVehicle implements Vehicle {
+
 
     private String license;
 
@@ -53,7 +57,7 @@ public class CarVehicle implements Vehicle {
 
     @Override
     public boolean equals(Object obj) {
-        if (getClass().equals(obj.getClass())){
+        if (obj != null && getClass().equals(obj.getClass())){
             CarVehicle motoVehicle = (CarVehicle) obj;
             return (license.equals(motoVehicle.getLicense()));
         }

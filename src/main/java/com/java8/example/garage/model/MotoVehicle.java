@@ -53,7 +53,7 @@ public class MotoVehicle implements Vehicle {
 
     @Override
     public boolean equals(Object obj) {
-        if (getClass().equals(obj.getClass())){
+        if (obj != null && getClass().equals(obj.getClass())){
             MotoVehicle motoVehicle = (MotoVehicle) obj;
             return (license.equals(motoVehicle.getLicense()));
         }

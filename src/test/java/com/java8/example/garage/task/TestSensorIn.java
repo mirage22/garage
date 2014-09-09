@@ -3,20 +3,24 @@ package com.java8.example.garage.task;
 /**
  * Created by miroslavkopecky on 08/09/14.
  */
-public class SensorOut implements Runnable {
+public class TestSensorIn implements Runnable {
 
     /**
      * Counter for vehicle
      */
     private GarageCounter counter;
 
-    public SensorOut(GarageCounter counter){
+    private int maxInt;
+
+    public TestSensorIn(GarageCounter counter, int maxInt){
         this.counter = counter;
+        this.maxInt = maxInt;
     }
 
     @Override
     public void run() {
-        counter.vehicleOut();
-        counter.vehicleOut();
+        for(int i=0; i<maxInt; i++){
+            counter.vehicleIn();
+        }
     }
 }

@@ -2,6 +2,10 @@ package com.java8.example.garage.model;
 
 /**
  * Created by miroslavkopecky on 08/09/14.
+ *
+ * Parking place DataStructure holds information about its status
+ * and position inside the Garage
+ *
  */
 public class ParkingPlace {
 
@@ -16,6 +20,12 @@ public class ParkingPlace {
     public ParkingPlace() {
     }
 
+    /**
+     * Construct Parking place based on properties
+     * @param vehicle
+     * @param level
+     * @param slot
+     */
     public ParkingPlace(Vehicle vehicle, Integer level, Integer slot) {
         this.vehicle = vehicle;
         this.level = level;
