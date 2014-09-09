@@ -96,6 +96,7 @@
 
   <properties>
     <!-- Logging -->
+    <java.version>1.8</java.version>
     <log4j.version>1.2.17</log4j.version>
     <slf4j.version>1.7.5</slf4j.version>
 
