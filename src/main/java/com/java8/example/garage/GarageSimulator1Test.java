@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Created by miroslavkopecky on 08/09/14.
  *
- * Simulation that start with generate set of LicensePlates randomly create vehicles to them.
+ * The Simulation starts with generated set of LicensePlates and randomly creates vehicles to them.
  *
  * 1. Generated Vehicles tries to enter the Garage
  * 2. if Vehicle is successful -> ENTER -> assigned to the Parking Places and Garage Counter is incremented ("GarageCounter: A Vehicle has ENTERED)
