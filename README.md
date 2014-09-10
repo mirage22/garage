@@ -24,10 +24,13 @@ SensorExceptionHandler - when anything happens inside the Thread need to be proc
 Services tests
 
 available Simulators:
-GarageSimulator1Test - Vehicles IN/OUT simulation, also available from the commandline
-GarageSimulator2Test - Vehicles IN/OUT simulation different setup
-GarageSimulator3Test - Based on GarageSimulator1Test and monitors thread locking (SensorsLock),
-                       other threads waiting and printing the behaviour into the Log output.
+
+1. GarageSimulator1Test - Vehicles IN/OUT simulation, also available from the commandline
+
+2. GarageSimulator2Test - Vehicles IN/OUT simulation different setup
+
+3. GarageSimulator3Test - Based on GarageSimulator1Test and monitors thread locking (SensorsLock),
+         other threads waiting and printing the behaviour into the Log output.
 
 maven-assembly-plugin plugin allows run GarageSimulator1Test from the command line
 #java -jar garage-1.0-SNAPSHOT-jar-with-dependencies.jar
