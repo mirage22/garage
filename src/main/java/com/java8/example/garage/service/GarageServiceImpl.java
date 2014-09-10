@@ -73,14 +73,17 @@ public class GarageServiceImpl implements GarageService {
      * @param garage - specific garage
      * @param place - specific parking place in the garage
      * @param vehicle - specific vehicle
+     *
+     * @return - returns modified Parking Place
      */
     @Override
-    public void setParkingPlace(Garage garage, ParkingPlace place, Vehicle vehicle) {
+    public ParkingPlace setParkingPlace(Garage garage, ParkingPlace place, Vehicle vehicle) {
         place.setVehicle(vehicle);
         garage.setPlace(place);
 
         place.setFree(false);
         vehicle.setGarage(true);
 
+        return place;
     }
 }
