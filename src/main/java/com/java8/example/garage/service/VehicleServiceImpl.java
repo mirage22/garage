@@ -23,7 +23,7 @@ public class VehicleServiceImpl implements VehicleService {
     private static final Logger logger = LoggerFactory.getLogger(VehicleServiceImpl.class);
 
     //Allowed number of Vehicle types -> based on the requirements
-    private static final int MAX_VEHICLE_TYPES = 2;
+    private static final int MAX_VEHICLE_TYPES = VehicleType.values().length;
 
 
     //static reference to itself

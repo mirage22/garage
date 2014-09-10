@@ -1,6 +1,7 @@
 package com.java8.example.garage.service;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class LabelServiceTest {
 
     }
 
+    @Ignore
     @Test
     public void testExistingElements(){
         Set<String> generatedLabels = labelService.generateVehicleLabels(MAX_LABELS);
