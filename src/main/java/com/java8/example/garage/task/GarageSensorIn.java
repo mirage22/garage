@@ -9,6 +9,7 @@ import com.java8.example.garage.service.GarageServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -34,6 +35,12 @@ public class GarageSensorIn implements Runnable{
         this.vehicles = vehicles;
     }
 
+    public GarageSensorIn(Lock lock, Garage garage, Vehicle[] vehicles){
+        this.lock = lock;
+        this.garage = garage;
+        this.vehicles = vehicles;
+    }
+
     //Simulate traffic int the gate into garage
     @Override
     public void run() {
@@ -43,6 +50,13 @@ public class GarageSensorIn implements Runnable{
                 if(vehicle != null && garage.getParkingPlaceByLicense(vehicle.getLicense()) == null){
                     garage = placeVehicle(garage, vehicle);
                 }
+            }
+
+            /*
+             * Used by GarageSimulator3 to monitor locking by threads
+             */
+            if(lock instanceof SensorsLock){
+                TimeUnit.MILLISECONDS.sleep(500);
             }
         }catch (InterruptedException e){
             e.printStackTrace();
