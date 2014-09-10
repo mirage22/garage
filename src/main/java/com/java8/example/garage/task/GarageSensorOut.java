@@ -52,6 +52,10 @@ public class GarageSensorOut implements Runnable{
                     garage = removeVehicle(garage, vehicles[i]);
                 }
             }
+
+            /*
+             * Used by GarageSimulator3 to monitor locking by threads
+             */
             if(lock instanceof SensorsLock){
                 TimeUnit.MILLISECONDS.sleep(500);
             }

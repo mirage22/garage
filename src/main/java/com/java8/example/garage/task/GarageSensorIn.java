@@ -51,6 +51,10 @@ public class GarageSensorIn implements Runnable{
                     garage = placeVehicle(garage, vehicle);
                 }
             }
+
+            /*
+             * Used by GarageSimulator3 to monitor locking by threads
+             */
             if(lock instanceof SensorsLock){
                 TimeUnit.MILLISECONDS.sleep(500);
             }
