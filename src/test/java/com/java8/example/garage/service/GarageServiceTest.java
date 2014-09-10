@@ -1,42 +1,37 @@
 package com.java8.example.garage.service;
 
 import com.java8.example.garage.model.Garage;
-import com.java8.example.garage.task.GarageCounter;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 /**
- * Created by miroslavkopecky on 09/09/14.
+ * Created by miroslavkopecky on 10/09/14.
+ *
+ * Test GarageService functionality
+ * Create simple Garage without counter
+ *
  */
-
-@RunWith(MockitoJUnitRunner.class)
 public class GarageServiceTest {
 
-    @Mock
-    GarageCounter counter;
-
-    @Mock
     GarageService garageService;
-
-    int number;
-
-    Garage garage;
-
 
     @Before
     public void setUp(){
-        garage = new Garage();
-        number = 1;
+        garageService = GarageServiceImpl.getInstance();
     }
 
     @Test
-    public void testCreateGarageMock(){
-        when(garageService.create(counter, number, number, number, number, number)).thenReturn(garage);
+    public void testCreateGarage(){
+        Garage garage = garageService.create(2,2, 2, 2, 2);
+
+        assertThat(garage, is(notNullValue()));
+        assertThat(garage.getCounter(), is(nullValue()));
+        assertThat(garage.getMaxLevel(), is(2));
+        assertThat(garage.getMaxSlot(), is(2));
+
     }
 
 }

@@ -31,7 +31,29 @@ public class Garage {
     }
 
     /**
-     * Creator with properties initialisation
+     * Constructor without counter
+     *
+     */
+    public Garage(int maxLevel, int maxSlot, int sensorsIn, int sensorsOut, int maxEntrance) {
+
+        this.maxLevel = maxLevel;
+        this.maxSlot = maxSlot;
+        this.maxCapacity = maxLevel * maxSlot;
+        this.sensorsIn = sensorsIn;
+        this.sensorsOut = sensorsOut;
+        this.maxEntrance = maxEntrance;
+
+        places = new ParkingPlace[maxLevel][maxSlot];
+
+        for(int i=0; i < maxLevel; i++){
+            for(int j=0; j< maxSlot; j++){
+                places[i][j] = new ParkingPlace(null,i,j);
+            }
+        }
+    }
+
+    /**
+     * Constructor with properties initialisation
      * Latter could be added as the properties
      *
      * @param counter - Atomic counter for Garage

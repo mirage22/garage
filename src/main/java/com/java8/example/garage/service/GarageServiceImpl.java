@@ -33,6 +33,13 @@ public class GarageServiceImpl implements GarageService {
     }
 
     //Better change to properties
+
+
+    @Override
+    public Garage create(int maxLevel, int maxSlot, int sensorsIn, int sensorsOut, int maxEntrance) {
+        return new Garage(maxLevel, maxSlot, sensorsIn, sensorsOut, maxEntrance);
+    }
+
     @Override
     public Garage create(GarageCounter counter, int maxLevel, int maxSlot, int sensorsIn, int sensorsOut, int maxEntrance) {
         return new Garage(counter, maxLevel, maxSlot, sensorsIn, sensorsOut, maxEntrance);

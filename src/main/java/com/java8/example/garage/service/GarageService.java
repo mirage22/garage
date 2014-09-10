@@ -13,6 +13,8 @@ import com.java8.example.garage.task.GarageCounter;
  */
 public interface GarageService {
 
+    Garage create(int maxLevel, int maxSlot, int sensorsIn, int sensorsOut, int maxEntrance);
+
     Garage create(GarageCounter counter, int maxLevel, int maxSlot, int sensorsIn, int sensorsOut, int maxEntrance);
 
     ParkingPlace getFreeParkingPlace(Garage garage);
