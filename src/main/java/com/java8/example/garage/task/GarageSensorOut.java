@@ -3,6 +3,8 @@ package com.java8.example.garage.task;
 import com.java8.example.garage.model.Garage;
 import com.java8.example.garage.model.ParkingPlace;
 import com.java8.example.garage.model.Vehicle;
+import com.java8.example.garage.service.GarageService;
+import com.java8.example.garage.service.GarageServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,9 +58,8 @@ public class GarageSensorOut implements Runnable{
             ParkingPlace place = garage.getParkingPlace(vehicle);
 
             if(place != null){
-                place.setFree(true);
-                vehicle.setGarage(false);
-                place.setVehicle(null);
+                GarageService garageService = GarageServiceImpl.getInstance();
+                garageService.clearParkingPlace(place, vehicle);
                 garage.getCounter().vehicleOut();
             }
 

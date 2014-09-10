@@ -21,4 +21,6 @@ public interface GarageService {
 
     ParkingPlace setParkingPlace(Garage garage, ParkingPlace place, Vehicle vehicle);
 
+    ParkingPlace clearParkingPlace(ParkingPlace place, Vehicle vehicle);
+
 }

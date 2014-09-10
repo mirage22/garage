@@ -86,4 +86,20 @@ public class GarageServiceImpl implements GarageService {
 
         return place;
     }
+
+    /**
+     * Clear ParkingPlace
+     * @param place - specific parking place in the garage
+     * @param vehicle - specific vehicle
+     * @return
+     */
+    @Override
+    public ParkingPlace clearParkingPlace(ParkingPlace place, Vehicle vehicle) {
+
+        place.setFree(true);
+        vehicle.setGarage(false);
+        place.setVehicle(null);
+
+        return place;
+    }
 }
