@@ -4,6 +4,7 @@ import com.java8.example.garage.model.CarVehicle;
 import com.java8.example.garage.model.Garage;
 import com.java8.example.garage.model.MotoVehicle;
 import com.java8.example.garage.model.Vehicle;
+import com.java8.example.garage.utils.VehicleType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,6 +54,28 @@ public class VehicleServiceImpl implements VehicleService {
         Random random = new Random();
         return isCar(random.nextInt(MAX_VEHICLE_TYPES))  ?
                 new CarVehicle(license) : new MotoVehicle(license);
+    }
+
+    /**
+     * Method used to generate specific Vehicles Type
+     * @param type
+     * @param license
+     * @return
+     */
+    @Override
+    public Vehicle getVehicleByType(VehicleType type, String license) {
+
+        switch(type){
+            case Car:
+                return new CarVehicle(license);
+            case Motorbike:
+                return new MotoVehicle(license);
+            default:
+                logger.error("NOT VEHICLE TYPE");
+                return null;
+        }
+
+
     }
 
     /**

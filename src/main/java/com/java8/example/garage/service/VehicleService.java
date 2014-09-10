@@ -2,6 +2,7 @@ package com.java8.example.garage.service;
 
 import com.java8.example.garage.model.Garage;
 import com.java8.example.garage.model.Vehicle;
+import com.java8.example.garage.utils.VehicleType;
 
 import java.util.Set;
 
@@ -14,6 +15,8 @@ import java.util.Set;
 public interface VehicleService {
 
     Vehicle getRandomVehicle(String license);
+
+    Vehicle getVehicleByType(VehicleType type, String license);
 
     Vehicle[][] getTestInVehicles(Garage garage, Set<String> labels);
 
