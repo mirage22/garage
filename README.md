@@ -17,9 +17,17 @@ The Simulation starts with generated set of LicensePlates and randomly creates v
 IN/OUT process is controlled by the Gates. Every Vehicle must go through.
 tasks 2,3,6 - are responsible thread base to the customization
 
+
 There are included also tests
 GarageCounter - important to keep update any time number of the cars inside, extends AtomicInteger
 SensorExceptionHandler - when anything happens inside the Thread need to be processed
+Services tests
+
+available Simulators:
+GarageSimulator1Test - Vehicles IN/OUT simulation, also available from the commandline
+GarageSimulator2Test - Vehicles IN/OUT simulation different setup
+GarageSimulator3Test - Based on GarageSimulator1Test and monitors thread locking (SensorsLock),
+                       other threads waiting and printing the behaviour into the Log output.
 
 maven-assembly-plugin plugin allows run GarageSimulator1Test from the command line
 #java -jar garage-1.0-SNAPSHOT-jar-with-dependencies.jar
