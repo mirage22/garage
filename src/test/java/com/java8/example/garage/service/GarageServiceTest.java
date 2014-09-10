@@ -65,4 +65,31 @@ public class GarageServiceTest {
 
     }
 
+    @Test
+    public void clearParkingPlace(){
+        int maxParkingSpaces = 4;
+
+        GarageCounter counter = new GarageCounter(maxParkingSpaces);
+        Garage garage = garageService.create(counter, 2,2, 2, 2, 2);
+        assertThat(garage, is(notNullValue()));
+
+        ParkingPlace freeParkingPlace = garageService.getFreeParkingPlace(garage);
+        assertThat(freeParkingPlace, is(notNullValue()));
+
+        String vehicleLabel = "1";
+        Vehicle motoVehicle = vehicleService.getVehicleByType(VehicleType.Motorbike, vehicleLabel);
+        assertThat(motoVehicle, instanceOf(MotoVehicle.class));
+        assertThat(motoVehicle.getLicense(), is(vehicleLabel));
+
+        //Check parking place status after assignment
+        freeParkingPlace = garageService.setParkingPlace(garage, freeParkingPlace, motoVehicle );
+        assertTrue(!freeParkingPlace.isFree());
+        assertTrue(freeParkingPlace.getVehicle().equals(motoVehicle));
+
+        //Remove the Vehicle from the ParkingPlace
+        freeParkingPlace= garageService.clearParkingPlace(freeParkingPlace, motoVehicle);
+        assertThat(freeParkingPlace.getVehicle(), is(nullValue()));
+
+    }
+
 }
