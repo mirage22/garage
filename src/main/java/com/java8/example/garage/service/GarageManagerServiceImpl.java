@@ -19,7 +19,7 @@ import java.util.Random;
 public class GarageManagerServiceImpl implements GarageManagerService {
 
     //static reference to itself
-    private static GarageManagerServiceImpl INSTANCE = new GarageManagerServiceImpl();
+    private static GarageManagerServiceImpl INSTANCE;
 
     private static final Logger logger = LoggerFactory.getLogger(GarageManagerServiceImpl.class);
 

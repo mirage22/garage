@@ -28,7 +28,7 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     //static reference to itself
-    private static VehicleServiceImpl INSTANCE = new VehicleServiceImpl();
+    private static VehicleServiceImpl INSTANCE;
 
     //Public method to Singleton
     public static VehicleServiceImpl getInstance(){

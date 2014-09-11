@@ -13,7 +13,7 @@ import java.util.Set;
 public class LabelServiceImpl implements LabelService {
 
     //static reference to itself
-    private static LabelServiceImpl INSTANCE = new LabelServiceImpl();
+    private static LabelServiceImpl INSTANCE;
 
     //Public method to Singleton
     public static LabelServiceImpl getInstance(){

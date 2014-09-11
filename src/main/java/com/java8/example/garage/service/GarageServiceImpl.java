@@ -15,7 +15,7 @@ import com.java8.example.garage.task.GarageCounter;
 public class GarageServiceImpl implements GarageService {
 
     //static reference to itself
-    private static GarageServiceImpl INSTANCE = new GarageServiceImpl();
+    private static GarageServiceImpl INSTANCE;
 
     //Public method to Singleton
     public static GarageServiceImpl getInstance(){
