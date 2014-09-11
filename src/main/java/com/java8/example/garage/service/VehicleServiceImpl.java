@@ -118,7 +118,7 @@ public class VehicleServiceImpl implements VehicleService {
 
         Iterator<String> labelsIterator = labels.iterator();
 
-        Set<Vehicle> possibleVehicles =  new HashSet<Vehicle>();
+        Set<Vehicle> possibleVehicles =  new HashSet<>();
         for(int i=0; i<garage.getMaxSlot(); i++){
             for(int j=0; j<garage.getMaxSlot(); j++){
                 if(vehicles[i][j] != null && !vehicles[i][j].isGarage()){

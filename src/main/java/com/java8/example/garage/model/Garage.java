@@ -10,6 +10,8 @@ import com.java8.example.garage.task.GarageCounter;
  */
 public class Garage {
 
+    private static final int INIT_GARAGE_SIZE = 1;
+
     int maxCapacity;
 
     int maxLevel;
@@ -25,9 +27,13 @@ public class Garage {
     //Atomic counter provides Garage status
     GarageCounter counter;
 
-    ParkingPlace[][] places;
+    private final  ParkingPlace[][] places;
 
+    /**
+     * Constructor for testing purposes without Counter
+     */
     public Garage() {
+        places = new ParkingPlace[INIT_GARAGE_SIZE][INIT_GARAGE_SIZE];
     }
 
     /**
