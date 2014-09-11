@@ -4,6 +4,7 @@ import com.java8.example.garage.model.CarVehicle;
 import com.java8.example.garage.model.Garage;
 import com.java8.example.garage.model.MotoVehicle;
 import com.java8.example.garage.model.Vehicle;
+import com.java8.example.garage.utils.NoVehicleTypeException;
 import com.java8.example.garage.utils.VehicleType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,8 +72,7 @@ public class VehicleServiceImpl implements VehicleService {
             case Motorbike:
                 return new MotoVehicle(license);
             default:
-                logger.error("NOT VEHICLE TYPE");
-                return null;
+                throw new NoVehicleTypeException("No such Vehicle exists", type.getCode());
         }
 
 
